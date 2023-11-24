@@ -2,7 +2,6 @@ package com.example.car.register.Car.Register.Operations.service;
 
 import com.example.car.register.Car.Register.Operations.entities.Vehicle;
 
-
 import java.util.List;
 
 
