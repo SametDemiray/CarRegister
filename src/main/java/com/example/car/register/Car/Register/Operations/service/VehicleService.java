@@ -13,7 +13,12 @@ public interface VehicleService {
 
     void deleteById(Long id);
 
-    void update();
+    Vehicle findById(Long id);
+
+    Vehicle update(Vehicle vehicle, long id);
 
     List<Vehicle> getAll();
+    void findOne(Vehicle vehicle);
+
+
 }

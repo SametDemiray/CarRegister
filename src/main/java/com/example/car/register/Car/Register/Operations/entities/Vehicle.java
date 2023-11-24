@@ -2,8 +2,10 @@ package com.example.car.register.Car.Register.Operations.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 import java.io.Serializable;
@@ -19,8 +21,7 @@ import java.util.List;
 
 public class Vehicle implements Serializable {
 
-    List<Vehicle> vehicles = new ArrayList<>();
-
+    List<Vehicle> vehicless = new ArrayList<>();
 
 
     @Id
@@ -47,8 +48,6 @@ public class Vehicle implements Serializable {
 
     @Column(name = "Price")
     private double price;
-
-
 
 
 }

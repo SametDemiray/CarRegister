@@ -14,7 +14,8 @@ public class VehicleServiceImpl implements VehicleService {
     @Autowired
     VehicleRepository vehicleRepository;
 
-    List<Vehicle> vehicles = new ArrayList<Vehicle>();
+    List<Vehicle> vehicles = new ArrayList<>();
+
 
     @Override
     public void save(Vehicle vehicle) {
@@ -37,20 +38,40 @@ public class VehicleServiceImpl implements VehicleService {
 
     }
 
-    @Override
-    public void update() {
-
-    }
 
     @Override
     public List<Vehicle> getAll() {
-        return null;
+        List<Vehicle> all = vehicleRepository.findAll();
+        System.out.println("Veritabanı kayıtları getirildi.");
+        return all;
+
     }
 
-/* @Override
- public List<Vehicle> getAll() {
-     vehicles.stream().filter(vehicle -> getAll().add(vehicle)).forEach(vehicle -> getAll());
+    @Override
+    public void findOne(Vehicle vehicle) {
 
-  return vehicles;*/
+    }
+
+    @Override
+    public Vehicle findById(Long id) {
+        System.out.println("Verilen Id'ye göre kayıt getirildi.");
+        return vehicleRepository.findById(id).orElse(null);
+
+    }
+
+    @Override
+    public Vehicle update(Vehicle vehicle, long id) {
+        Vehicle existingVehicle = vehicleRepository.findById(id).orElseThrow();
+
+        existingVehicle.setId(vehicle.getId());
+        existingVehicle.setBrand(vehicle.getBrand());
+        existingVehicle.setModel(vehicle.getModel());
+        existingVehicle.setYear(vehicle.getYear());
+        existingVehicle.setGear(vehicle.getGear());
+        existingVehicle.setKm(vehicle.getKm());
+        existingVehicle.setPrice(vehicle.getPrice());
+
+        vehicleRepository.save(existingVehicle);
+        return existingVehicle;
+    }
 }
-
